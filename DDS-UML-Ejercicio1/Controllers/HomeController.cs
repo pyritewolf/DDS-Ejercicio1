@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Ejercicio1.Models;
 
-namespace DDS_UML_Ejercicio1.Controllers
+namespace Ejercicio1.Controllers
 {
     public class HomeController : Controller
     {
@@ -13,16 +14,16 @@ namespace DDS_UML_Ejercicio1.Controllers
             return View();
         }
 
-        public ActionResult About()
+        [HttpPost]
+        public ActionResult Index(FormCollection busqueda)
         {
-            ViewBag.Message = "Your application description page.";
 
-            return View();
-        }
+            Control control = new Control();
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+            int cantidadCuentas = control.getCliente(int.Parse(busqueda["dni"]), int.Parse(busqueda["saldo"]));
+
+            ViewBag.Result = "El cliente con DNI " + busqueda["dni"] + " tiene " +cantidadCuentas+ " cuentas con un saldo mayor a $" + busqueda["saldo"];
+
 
             return View();
         }

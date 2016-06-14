@@ -19,6 +19,15 @@
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
-textarea {
+textarea, button {
     max-width: 280px;
+    padding: 10px;
+    border: 1px #eee solid;
+    border-radius: 5px;
+    font-family: Arial;
+    outline: 0;
+}
+
+button {
+    background-color: #eee;
 }
